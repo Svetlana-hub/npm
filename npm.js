@@ -1,5 +1,3 @@
-
-
 //////// if...else
 function offerDrink(age) {
     if (age < 16) {
@@ -38,7 +36,7 @@ for (let i = 0; i < presents.length; i ++){
 let numbers = [4, 12, 8, 10, 2];
 let multipliedNumbers = [];
 
-for (num of numbers) {
+for (let num of numbers) {
     num = num*2;
     multipliedNumbers.push(num);
 }
@@ -109,21 +107,6 @@ multiplyByNumber(10);
 
 
 
-/// classes - class A is shown here, class B inheriting from A is shown in npmTaskWithClass.1.js file. Instance is created and methods are called in npmTaskWithClass2.js file 
-class Car {
-    constructor(model, year, color) {
-        this.model = model;
-        this.year = year;
-        this.color = color;
-    }
-    drive() {
-        console.log('Bip-bip, I am driving...');
-    }
-    stop() {
-        console.log('Stopping...')
-    }
-}
-
 
 
 ////////// callbacks, promises, async/await
@@ -164,12 +147,17 @@ myPromise.then(
 
 
 // - Только async/await
+// async function makeCalculation(a,b) {
+//     let result = await a+b;
+//     console.log('Result for async/await is ' + result);
+// }
+// makeCalculation(1,3);
+
 async function makeCalculation(a,b) {
-    let result = await a+b;
+    let result = a+b;
     console.log('Result for async/await is ' + result);
 }
-makeCalculation(1,3);
-
+async ()=> await makeCalculation(1,3) ();
 
 
 // - Комбинация callback + promise
@@ -201,19 +189,12 @@ function promiseFunction() {
 
 // - Комбинация promise + async/await
 async function showaAfterSomeTime() {
-
-    let promise = new Promise(function(resolve) {
-      setTimeout(() => resolve("Result for promise + async/await"), 1000)
-    });
-  
-    let result = await promise; 
-  
-    console.log(result); 
+    return new Promise(function(resolve) {
+        setTimeout(() => resolve("Result for promise + async/await"), 1000)
+      });;
   }
   
-showaAfterSomeTime();
-
-
+  (async  ()=> console.log(await showaAfterSomeTime())) ();
 
 ////////Написать метод, который принимает массив строк в качестве параметра и 
 ////////выводит в консоль слово с наибольшим количеством букв. 
@@ -277,4 +258,3 @@ const changeStr = (str) => {
     return str.replaceAll(' ', '_');
 }
 console.log(changeStr(str));
-
